@@ -1,23 +1,15 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   structs.h                                          :+:      :+:    :+:   */
+/*   check_validaty.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: andrferr <andrferr@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/12/22 21:00:26 by andrferr          #+#    #+#             */
-/*   Updated: 2022/12/27 22:14:36 by andrferr         ###   ########.fr       */
+/*   Created: 2022/12/27 22:13:18 by andrferr          #+#    #+#             */
+/*   Updated: 2022/12/27 22:13:55 by andrferr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef STRUCTS_H
-# define STRUCTS_H
+#include "../includes/so_long.h"
 
-typedef struct s_so_long
-{
-	char	**map;
-	int		height;
-	int		width;
-}		t_so_long;
-
-#endif
+int	check_validaty(t_so_long *sl, )
