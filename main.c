@@ -6,7 +6,7 @@
 /*   By: andrferr <andrferr@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/22 21:01:17 by andrferr          #+#    #+#             */
-/*   Updated: 2022/12/27 19:30:51 by andrferr         ###   ########.fr       */
+/*   Updated: 2023/01/09 18:18:48 by andrferr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,13 +14,24 @@
 
 int	main(int argc, char **argv)
 {
-	t_so_long sl;
+	t_so_long *sl;
 	
+	sl = (t_so_long *)ft_calloc(1, sizeof(t_so_long));
+	if (!sl)
+		return (0);
 	if (argc != 2)
 	{
-		handle_errors("Not right number of arguments");
+		handle_errors("Not right number of arguments\n");
 		return (1);
 	}
-	map_setup(argv[1], &sl);
+	if (!map_setup(argv[1], sl))
+		return (0);
+	if (!check_validaty(sl))
+	{
+		free_struct(sl);
+		return (0);
+	}
+	handle_window(sl);
+	free_struct(sl);
 	return (0);
 }

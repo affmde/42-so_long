@@ -1,39 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   structs.h                                          :+:      :+:    :+:   */
+/*   handle_image.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: andrferr <andrferr@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/12/22 21:00:26 by andrferr          #+#    #+#             */
-/*   Updated: 2023/01/09 18:48:41 by andrferr         ###   ########.fr       */
+/*   Created: 2023/01/09 18:41:30 by andrferr          #+#    #+#             */
+/*   Updated: 2023/01/10 08:52:50 by andrferr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef STRUCTS_H
-# define STRUCTS_H
+#include "../includes/so_long.h"
 
-# include <mlx.h>
-
-typedef struct  s_img
+int	handle_image(t_so_long *sl)
 {
-	void	*img;
-	int		height;
-	int		width;
-}		t_img;
+	t_img *img;
 
-typedef struct s_so_long
-{
-	char	**map;
-	int		height;
-	int		width;
-	int		nbr_exits;
-	int		nbr_players;
-	int		nbr_collectibles;
-	void	*ptr;
-	void	*win;
-	t_img	*img;
-}		t_so_long;
-
-
-#endif
+	img = ft_calloc(1, sizeof(t_img));
+	if (!img)
+		return (0);
+	img->img = mlx_xpm_file_to_image(sl->ptr, "../textures/tile.xpm", &sl->img->height, &sl->img->width);
+	if (!img)
+		return (0);
+	sl->img = img;
+	ft_printf("img w: %d\n", sl->img->width);
+	return (1);
+}

@@ -6,17 +6,32 @@
 /*   By: andrferr <andrferr@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/27 19:24:19 by andrferr          #+#    #+#             */
-/*   Updated: 2022/12/27 22:28:00 by andrferr         ###   ########.fr       */
+/*   Updated: 2023/01/09 18:16:53 by andrferr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/so_long.h"
 
-static int	get_map_heigth(char *argc, t_so_long *sl)
+int	get_width(char *line)
+{
+	int	width;
+	
+	width = 0;
+	while(*line)
+	{
+		if ((!ft_isspace(*line) && ft_isspace(*(line + 1))) || (!ft_isspace(*line) && *(line + 1) == '\0'))
+			width++;
+		line++;
+	}
+	return (width);
+}
+
+static int	get_map_dimensions(char *argc, t_so_long *sl)
 {
 	int	fd;
 	int	count;
 	char *str;
+	int	width;
 	
 	if((fd = open(argc, O_RDONLY)) < 0)
 		return (0);
@@ -27,71 +42,82 @@ static int	get_map_heigth(char *argc, t_so_long *sl)
 		if (!str)
 			break;
 		count++;
+		width = get_width(str);
 		free(str);
 	}
 	sl->height = count;
+	sl->width = width;
 	close(fd);
 	return (1);
 }
 
-static int get_map_width(char *argc, t_so_long *sl)
+static char	**remove_spaces(char **map, t_so_long sl)
 {
-	int		fd;
-	char	*str;
-	char	**arr;
-	int		count;
-
-	if ((fd = open(argc, O_RDONLY)) < 0)
+	int		i;
+	int		j;
+	int		k;
+	char	*line;
+	char	**new_map;
+	
+	i = 0;
+	new_map = ft_calloc(sl.height + 1, sizeof(char *));
+	if (!new_map)
 		return (0);
-	str = get_next_line(fd);
-	if (!str)
-		return (0);
-	arr = ft_split(str, ' ');
-	ft_strdel(&str);
-	if (!arr)
-		return (0);
-	count = 0;
-	while (arr[count])
+	while (map[i])
 	{
-		ft_strdel(&arr[count]);
-		count++;
+		j = 0;
+		k = 0;
+		line = ft_calloc(get_width(map[i]) + 1, sizeof(char *));
+		if (!line)
+			return (0);
+		while (map[i][k])
+		{
+			if (!ft_isspace(map[i][k]))
+				line[j++] = map[i][k];
+			k++;
+		}
+		new_map[i] = line;
+		i++;
 	}
-	sl->width = count;
-	free(arr);
-	close(fd);
-	return (1);
+	return (new_map);
 }
 
 static int	get_map(char *argc, t_so_long *sl)
 {
 	int		fd;
-	int		i;
+	char	*str;
 	char	**map;
+	int		i;
+	
 	if ((fd = open(argc, O_RDONLY)) < 0)
 		return (0);
-	map = (char **)malloc(sizeof(char *) * (sl->height + 1));
-	if (map)
+	map = ft_calloc(sl->height + 1, sizeof(char *));
+	if (!map)
 		return (0);
 	i = 0;
-	while (1)
+	while ((str = get_next_line(fd)))
 	{
-		map[i] = get_next_line(fd);
-		if (map[i])
-			break ;
+		map[i] = ft_strdup(str);
+		if (!map[i])
+		{
+			free_map(map);
+			return (0);
+		}
+		free(str);
 		i++;
 	}
 	map[i] = NULL;
-	sl->map = map;
-	while (map)
-		ft_printf("%s", map++);
+	sl->map = remove_spaces(map, *sl);
+	free_map(map);
 	close(fd);
 	return (1);
 }
 
-void	map_setup(char *argc, t_so_long *sl)
+int	map_setup(char *argc, t_so_long *sl)
 {
-	get_map_heigth(argc, sl);
-	get_map_width(argc, sl);
-	get_map(argc, sl);
-	
+	if (!get_map_dimensions(argc, sl))
+		return (0);
+	if (!get_map(argc, sl))
+		return (0);
+	return (1);
 }

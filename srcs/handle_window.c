@@ -1,39 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   structs.h                                          :+:      :+:    :+:   */
+/*   handle_window.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: andrferr <andrferr@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/12/22 21:00:26 by andrferr          #+#    #+#             */
-/*   Updated: 2023/01/09 18:48:41 by andrferr         ###   ########.fr       */
+/*   Created: 2023/01/09 18:06:38 by andrferr          #+#    #+#             */
+/*   Updated: 2023/01/09 18:54:40 by andrferr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef STRUCTS_H
-# define STRUCTS_H
+#include "../includes/so_long.h"
 
-# include <mlx.h>
-
-typedef struct  s_img
+int	close_window(void)
 {
-	void	*img;
-	int		height;
-	int		width;
-}		t_img;
+	exit(1);
+}
 
-typedef struct s_so_long
-{
-	char	**map;
-	int		height;
-	int		width;
-	int		nbr_exits;
-	int		nbr_players;
-	int		nbr_collectibles;
-	void	*ptr;
-	void	*win;
-	t_img	*img;
-}		t_so_long;
-
-
-#endif
+int	handle_window(t_so_long *sl)
+{	
+	sl->ptr = mlx_init();
+	if (!sl->ptr)
+		return (0);
+	sl->win = mlx_new_window(sl->ptr, HEIGHT, WIDTH, "So Long");
+	if (!sl->win)
+		return (0);
+	handle_image(sl);
+	mlx_hook(sl->win, 17, 0, close_window, NULL);
+	mlx_loop(sl->ptr);
+	return (1);
+}

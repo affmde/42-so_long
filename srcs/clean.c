@@ -1,39 +1,40 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   structs.h                                          :+:      :+:    :+:   */
+/*   clean.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: andrferr <andrferr@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/12/22 21:00:26 by andrferr          #+#    #+#             */
-/*   Updated: 2023/01/09 18:48:41 by andrferr         ###   ########.fr       */
+/*   Created: 2023/01/09 14:47:15 by andrferr          #+#    #+#             */
+/*   Updated: 2023/01/09 18:54:06 by andrferr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef STRUCTS_H
-# define STRUCTS_H
+#include "../includes/so_long.h"
 
-# include <mlx.h>
-
-typedef struct  s_img
+void	free_map(char **map)
 {
-	void	*img;
-	int		height;
-	int		width;
-}		t_img;
+	int	i;
 
-typedef struct s_so_long
+	i = 0;
+	while (map[i])
+		ft_strdel(&map[i++]);
+	free(map);
+}
+
+void	free_struct(t_so_long *sl)
 {
-	char	**map;
-	int		height;
-	int		width;
-	int		nbr_exits;
-	int		nbr_players;
-	int		nbr_collectibles;
-	void	*ptr;
-	void	*win;
-	t_img	*img;
-}		t_so_long;
-
-
-#endif
+	if (sl)
+	{
+		if (sl->map)
+			free_map(sl->map);
+		if (sl->ptr)
+			ft_memdel(&sl->ptr);
+		if (sl->win)
+			ft_memdel(&sl->win);
+		if (sl->img)
+			free(sl->img);
+		if (sl)
+			free(sl);
+	}
+}
