@@ -6,7 +6,7 @@
 /*   By: andrferr <andrferr@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/22 21:00:26 by andrferr          #+#    #+#             */
-/*   Updated: 2023/01/09 18:48:41 by andrferr         ###   ########.fr       */
+/*   Updated: 2023/01/15 14:03:13 by andrferr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,9 +15,9 @@
 
 # include <mlx.h>
 
-typedef struct  s_img
+typedef struct s_img
 {
-	void	*img;
+	void	*img_ptr;
 	int		height;
 	int		width;
 }		t_img;

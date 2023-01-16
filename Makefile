@@ -1,6 +1,6 @@
 NAME = so_long
 FLAGS = -Wall -Werror -Wextra
-SRCS = handle_errors.c map_setup.c check_validaty.c clean.c handle_window.c handle_image.c
+SRCS = handle_errors.c map_setup.c check_validaty.c clean.c handle_window.c handle_image.c path_validity.c
 SRCSDEST = $(addprefix ./srcs/, $(SRCS))
 OBJ = $(SRCS:.c=.o)
 INC = -I /includes/so_long.h /includes/strucs.h

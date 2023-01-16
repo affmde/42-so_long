@@ -6,7 +6,7 @@
 /*   By: andrferr <andrferr@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/22 20:59:50 by andrferr          #+#    #+#             */
-/*   Updated: 2023/01/09 18:50:39 by andrferr         ###   ########.fr       */
+/*   Updated: 2023/01/15 13:41:15 by andrferr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,5 +27,6 @@ void	free_map(char **map);
 void	free_struct(t_so_long *sl);
 int		handle_window(t_so_long *sl);
 int		handle_image(t_so_long *sl);
+int		is_valid_path(t_so_long *sl);
 
 #endif

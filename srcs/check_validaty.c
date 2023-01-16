@@ -6,7 +6,7 @@
 /*   By: andrferr <andrferr@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/27 22:13:18 by andrferr          #+#    #+#             */
-/*   Updated: 2023/01/09 18:17:09 by andrferr         ###   ########.fr       */
+/*   Updated: 2023/01/15 13:42:06 by andrferr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -102,6 +102,10 @@ int	check_validaty(t_so_long *sl)
 		ft_putendl_fd("Invalid map. Map is not closed.", 2);
 		return (0);
 	}
-	
+	if (!is_valid_path(sl))
+	{
+		ft_putendl_fd("Invalid map. Path is not valid.", 2);
+		return (0);
+	}
 	return (1);
 }
