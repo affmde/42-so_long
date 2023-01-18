@@ -6,7 +6,7 @@
 /*   By: andrferr <andrferr@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/15 09:44:30 by andrferr          #+#    #+#             */
-/*   Updated: 2023/01/15 13:44:25 by andrferr         ###   ########.fr       */
+/*   Updated: 2023/01/18 10:06:03 by andrferr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -95,5 +95,6 @@ int	is_valid_path(t_so_long *sl)
 		}
 		i++;
 	}
+	free_visited(visited, sl->height);
 	return (path_found);
 }

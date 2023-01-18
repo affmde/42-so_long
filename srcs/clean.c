@@ -6,7 +6,7 @@
 /*   By: andrferr <andrferr@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/09 14:47:15 by andrferr          #+#    #+#             */
-/*   Updated: 2023/01/09 18:54:06 by andrferr         ###   ########.fr       */
+/*   Updated: 2023/01/18 10:06:52 by andrferr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,4 +37,17 @@ void	free_struct(t_so_long *sl)
 		if (sl)
 			free(sl);
 	}
+}
+
+void	free_visited(int **arr, int height)
+{
+	int	i;
+
+	i = 0;
+	while (i < height)
+	{
+		free(arr[i]);
+		i++;
+	}
+	free(arr);
 }

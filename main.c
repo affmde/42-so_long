@@ -6,7 +6,7 @@
 /*   By: andrferr <andrferr@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/22 21:01:17 by andrferr          #+#    #+#             */
-/*   Updated: 2023/01/09 18:18:48 by andrferr         ###   ########.fr       */
+/*   Updated: 2023/01/18 10:15:36 by andrferr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,12 @@ int	main(int argc, char **argv)
 	{
 		free_struct(sl);
 		return (0);
+	}
+	for (int i = 0; i < sl->height; i++)
+	{
+		for (int j = 0; j < sl->width; j++)
+			ft_printf("%c ", sl->map[i][j]);
+		ft_putchar('\n');
 	}
 	handle_window(sl);
 	free_struct(sl);

@@ -6,7 +6,7 @@
 /*   By: andrferr <andrferr@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/22 20:59:50 by andrferr          #+#    #+#             */
-/*   Updated: 2023/01/17 10:02:34 by andrferr         ###   ########.fr       */
+/*   Updated: 2023/01/18 10:05:55 by andrferr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,5 +28,7 @@ void	free_struct(t_so_long *sl);
 int		handle_window(t_so_long *sl);
 int		handle_image(t_so_long *sl, char *filename, int	x, int y);
 int		is_valid_path(t_so_long *sl);
+int		populate_window(t_so_long *sl);
+void	free_visited(int **arr, int height);
 
 #endif
