@@ -6,7 +6,7 @@
 /*   By: andrferr <andrferr@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/09 18:41:30 by andrferr          #+#    #+#             */
-/*   Updated: 2023/01/18 10:11:30 by andrferr         ###   ########.fr       */
+/*   Updated: 2023/01/20 09:20:19 by andrferr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,7 +60,7 @@ int	populate_window(t_so_long *sl)
 			texture = get_texture(sl, i, j);
 			if (!texture)
 				return (0);
-			if (!handle_image(sl, texture, j, i))
+			if (!handle_image(sl, texture, i, j))
 			{
 				ft_strdel(&texture);
 				return (0);

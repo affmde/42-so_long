@@ -6,7 +6,7 @@
 /*   By: andrferr <andrferr@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/27 22:13:18 by andrferr          #+#    #+#             */
-/*   Updated: 2023/01/15 13:42:06 by andrferr         ###   ########.fr       */
+/*   Updated: 2023/01/20 09:18:04 by andrferr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,6 +85,28 @@ static int	check_walls(t_so_long *sl)
 	return (1);
 }
 
+static int	check_dimensions(t_so_long *sl)
+{
+	int	i;
+	int	j;
+	
+	i = 0;
+	while (sl->map[i])
+	{
+		j = 0;
+		while (sl->map[i][j])
+		{
+			if (j >= sl->width)
+				return (1);
+			j++;
+		}
+		i++;
+	}
+	if (i > sl->height)
+		return (1);
+	return (0);
+}
+
 int	check_validaty(t_so_long *sl)
 {
 	if (!check_chars(sl) || sl->height == sl->width)
@@ -105,6 +127,11 @@ int	check_validaty(t_so_long *sl)
 	if (!is_valid_path(sl))
 	{
 		ft_putendl_fd("Invalid map. Path is not valid.", 2);
+		return (0);
+	}
+	if (check_dimensions(sl))
+	{
+		ft_putendl_fd("Invalid map. Not correct dimensions.", 2);
 		return (0);
 	}
 	return (1);

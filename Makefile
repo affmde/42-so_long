@@ -19,8 +19,8 @@ all: $(NAME)
 
 $(NAME): $(SRCSDEST) main.c
 	make -C ./libft
-	cc $(FLAGS) $(SRCSDEST) main.c -o $(NAME) -L /usr/local/lib $(MOSFLAGS) -L. ./libft/libft.a
-#cc $(FLAGS) $(SRCSDEST) main.c -o $(NAME) -L /usr/local/lib $(LINFLAGS) -L. ./libft/libft.a
+#cc $(FLAGS) $(SRCSDEST) main.c -o $(NAME) -L /usr/local/lib $(MOSFLAGS) -L. ./libft/libft.a
+	cc $(FLAGS) $(SRCSDEST) main.c -o $(NAME) -L /usr/local/lib $(LINFLAGS) -L. ./libft/libft.a
 clean:
 	rm -f *.o $(LIBOBJ)
 
