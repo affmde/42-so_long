@@ -6,7 +6,7 @@
 /*   By: andrferr <andrferr@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/09 18:41:30 by andrferr          #+#    #+#             */
-/*   Updated: 2023/01/20 09:20:19 by andrferr         ###   ########.fr       */
+/*   Updated: 2023/01/20 11:12:18 by andrferr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,7 @@ int	populate_window(t_so_long *sl)
 	int	i;
 	int	j;
 	char *texture;
-	
+
 	i = 0;
 	ft_printf("h: %d w: %d\n", sl->height, sl->width);
 	while (i < sl->height)
