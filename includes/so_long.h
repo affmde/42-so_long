@@ -6,7 +6,7 @@
 /*   By: andrferr <andrferr@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/22 20:59:50 by andrferr          #+#    #+#             */
-/*   Updated: 2023/01/23 09:24:31 by andrferr         ###   ########.fr       */
+/*   Updated: 2023/01/23 16:52:01 by andrferr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ void	free_map(char **map);
 void	free_struct(t_so_long *sl);
 int		handle_window(t_so_long *sl);
 int		handle_image(t_so_long *sl, char *filename, int	x, int y);
-int		is_valid_path(t_so_long *sl);
+int		is_valid_path(t_so_long *sl, char target, char objective);
 int		populate_window(t_so_long *sl);
 void	free_visited(int **arr, int height);
 int		deal_key(int keycode, t_so_long *sl);
@@ -41,5 +41,6 @@ void	show_exit(t_so_long *sl);
 int		is_collectable(t_so_long *sl, int i, int j);
 int		can_exit(t_so_long *sl, int i, int j);
 void	AI_move(t_so_long *sl);
+void	keep_exit_hidden(t_so_long *sl);
 
 #endif

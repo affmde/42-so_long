@@ -6,7 +6,7 @@
 /*   By: andrferr <andrferr@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/09 18:41:30 by andrferr          #+#    #+#             */
-/*   Updated: 2023/01/22 09:11:43 by andrferr         ###   ########.fr       */
+/*   Updated: 2023/01/23 18:10:47 by andrferr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,8 @@ int	handle_image(t_so_long *sl, char *filename, int	x, int y)
 		return (0);
 	}
 	mlx_put_image_to_window(sl->ptr, sl->win, sl->img->img_ptr, y * sl->img->height, x * sl->img->width);
+	mlx_destroy_image(sl->ptr, sl->img->img_ptr);
+	free(sl->img);
 	return (1);
 }
 

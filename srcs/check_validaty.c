@@ -6,7 +6,7 @@
 /*   By: andrferr <andrferr@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/27 22:13:18 by andrferr          #+#    #+#             */
-/*   Updated: 2023/01/20 09:18:04 by andrferr         ###   ########.fr       */
+/*   Updated: 2023/01/23 17:41:06 by andrferr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ static int	check_amounts(t_so_long *sl)
 {
 	int	i;
 	int	j;
-	
+
 	i = 0;
 	while (i < sl->height)
 	{
@@ -55,7 +55,7 @@ static int	check_amounts(t_so_long *sl)
 			if (sl->map[i][j] == 'C')
 				sl->nbr_collectibles++;
 			j++;
-		}	
+		}
 		i++;
 	}
 	if (sl->nbr_exits != 1 || sl->nbr_players != 1)
@@ -89,7 +89,7 @@ static int	check_dimensions(t_so_long *sl)
 {
 	int	i;
 	int	j;
-	
+
 	i = 0;
 	while (sl->map[i])
 	{
@@ -105,6 +105,31 @@ static int	check_dimensions(t_so_long *sl)
 	if (i > sl->height)
 		return (1);
 	return (0);
+}
+
+static int	check_colectables_access(t_so_long *sl)
+{
+	int	i;
+	int	j;
+
+	i = 0;
+	while (i < sl->height)
+	{
+		j = 0;
+		while (j < sl->width)
+		{
+			if (sl->map[i][j] == 'C')
+			{
+				sl->map[i][j] = 'c';
+				if (!is_valid_path(sl, sl->map[i][j], 'P'))
+					return (0);
+				sl->map[i][j] = 'C';
+			}
+			j++;
+		}
+		i++;
+	}
+	return (1);
 }
 
 int	check_validaty(t_so_long *sl)
@@ -124,7 +149,7 @@ int	check_validaty(t_so_long *sl)
 		ft_putendl_fd("Invalid map. Map is not closed.", 2);
 		return (0);
 	}
-	if (!is_valid_path(sl))
+	if (!is_valid_path(sl, 'P', 'E') || !check_colectables_access(sl))
 	{
 		ft_putendl_fd("Invalid map. Path is not valid.", 2);
 		return (0);

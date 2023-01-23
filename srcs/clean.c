@@ -6,7 +6,7 @@
 /*   By: andrferr <andrferr@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/09 14:47:15 by andrferr          #+#    #+#             */
-/*   Updated: 2023/01/21 10:04:38 by andrferr         ###   ########.fr       */
+/*   Updated: 2023/01/23 17:44:26 by andrferr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,8 @@ void	free_struct(t_so_long *sl)
 			free(sl->img);
 		if (sl->pos)
 			free(sl->pos);
+		if (sl->exit_pos)
+			free(sl->exit_pos);
 		if (sl)
 			free(sl);
 	}

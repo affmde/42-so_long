@@ -6,7 +6,7 @@
 /*   By: andrferr <andrferr@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/22 21:00:26 by andrferr          #+#    #+#             */
-/*   Updated: 2023/01/22 10:42:38 by andrferr         ###   ########.fr       */
+/*   Updated: 2023/01/23 14:58:25 by andrferr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,11 +22,11 @@ typedef struct s_img
 	int		width;
 }		t_img;
 
-typedef struct s_current_pos
+typedef struct s_pos
 {
 	int	i;
 	int	j;
-}	t_curr_pos;
+}	t_pos;
 
 typedef struct s_mlx_img
 {
@@ -34,7 +34,7 @@ typedef struct s_mlx_img
 	int			*data;
 	int			size_l;
 	int			bpp;
-	int			endian;	
+	int			endian;
 }	t_mlx_img;
 
 typedef struct s_so_long
@@ -49,7 +49,8 @@ typedef struct s_so_long
 	void		*ptr;
 	void		*win;
 	t_img		*img;
-	t_curr_pos	*pos;
+	t_pos		*pos;
+	t_pos		*exit_pos;
 }		t_so_long;
 
 #endif

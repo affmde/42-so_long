@@ -6,7 +6,7 @@
 /*   By: andrferr <andrferr@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/09 18:06:38 by andrferr          #+#    #+#             */
-/*   Updated: 2023/01/23 09:30:02 by andrferr         ###   ########.fr       */
+/*   Updated: 2023/01/23 17:59:15 by andrferr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ static void	map_edit(t_so_long *sl)
 }
 
 int	handle_window(t_so_long *sl)
-{	
+{
 	sl->ptr = mlx_init();
 	if (!sl->ptr)
 		return (0);
@@ -43,12 +43,11 @@ int	handle_window(t_so_long *sl)
 	map_edit(sl);
 	populate_window(sl);
 	//menu_put(sl);
-	for (int i = 0; i < 10; i++)
-	{
-		sleep(1);
-		AI_move(sl);
-		ft_printf("i: %d\n", i);
-	}
+	// for (int i = 0; i < 10; i++)
+	// {
+	// 	AI_move(sl);
+	// 	ft_printf("i: %d\n", i);
+	// }
 	mlx_key_hook(sl->win, deal_key, sl);
 	mlx_hook(sl->win, 17, 0, close_window, NULL);
 	mlx_loop(sl->ptr);

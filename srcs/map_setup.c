@@ -6,7 +6,7 @@
 /*   By: andrferr <andrferr@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/27 19:24:19 by andrferr          #+#    #+#             */
-/*   Updated: 2023/01/21 11:02:21 by andrferr         ###   ########.fr       */
+/*   Updated: 2023/01/23 15:44:21 by andrferr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 int	get_width(char *line)
 {
 	int	width;
-	
+
 	width = 0;
 	while(*line)
 	{
@@ -32,7 +32,7 @@ static int	get_map_dimensions(char *argc, t_so_long *sl)
 	int	count;
 	char *str;
 	int	width;
-	
+
 	if((fd = open(argc, O_RDONLY)) < 0)
 		return (0);
 	count = 0;
@@ -58,7 +58,7 @@ static char	**remove_spaces(char **map, t_so_long *sl)
 	int		k;
 	char	*line;
 	char	**new_map;
-	
+
 	i = 0;
 	new_map = ft_calloc(sl->height + 1, sizeof(char *));
 	if (!new_map)
@@ -77,6 +77,11 @@ static char	**remove_spaces(char **map, t_so_long *sl)
 				sl->pos->i = i;
 				sl->pos->j = j;
 			}
+			else if (map[i][k] == 'E')
+			{
+				sl->exit_pos->i = i;
+				sl->exit_pos->j = j;
+			}
 			if (!ft_isspace(map[i][k]))
 				line[j++] = map[i][k];
 			k++;
@@ -93,7 +98,7 @@ static int	get_map(char *argc, t_so_long *sl)
 	char	*str;
 	char	**map;
 	int		i;
-	
+
 	if ((fd = open(argc, O_RDONLY)) < 0)
 		return (0);
 	map = ft_calloc(sl->height + 1, sizeof(char *));
@@ -120,14 +125,23 @@ static int	get_map(char *argc, t_so_long *sl)
 
 int	map_setup(char *argc, t_so_long *sl)
 {
-	t_curr_pos *pos;
-	pos = (t_curr_pos *)malloc(sizeof(t_curr_pos));
+	t_pos *pos;
+	pos = (t_pos *)malloc(sizeof(t_pos));
 	if (!pos)
 		return (0);
+	t_pos	*exit;
+	exit = (t_pos *)malloc(sizeof(t_pos));
+	if (!exit)
+	{
+		free(pos);
+		return (0);
+	}
 	sl->pos = pos;
+	sl->exit_pos = exit;
 	if (!get_map_dimensions(argc, sl))
 	{
 		free(pos);
+		free(exit);
 		return (0);
 	}
 	if (!get_map(argc, sl))

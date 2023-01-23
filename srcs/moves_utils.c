@@ -6,7 +6,7 @@
 /*   By: andrferr <andrferr@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/23 09:13:19 by andrferr          #+#    #+#             */
-/*   Updated: 2023/01/23 09:13:54 by andrferr         ###   ########.fr       */
+/*   Updated: 2023/01/23 15:52:13 by andrferr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,4 +46,10 @@ int	can_exit(t_so_long *sl, int i, int j)
 	if (sl->map[i][j] == 'E' && sl->nbr_collectibles == 0)
 		return (1);
 	return (0);
+}
+
+void	keep_exit_hidden(t_so_long *sl)
+{
+	if (sl->nbr_collectibles && sl->pos->i != sl->exit_pos->i && sl->pos->j != sl->exit_pos->j)
+		sl->map[sl->exit_pos->i][sl->exit_pos->j] = 'e';
 }
