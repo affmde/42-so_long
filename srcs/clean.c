@@ -6,7 +6,7 @@
 /*   By: andrferr <andrferr@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/09 14:47:15 by andrferr          #+#    #+#             */
-/*   Updated: 2023/01/18 10:06:52 by andrferr         ###   ########.fr       */
+/*   Updated: 2023/01/21 10:04:38 by andrferr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,8 @@ void	free_struct(t_so_long *sl)
 			ft_memdel(&sl->win);
 		if (sl->img)
 			free(sl->img);
+		if (sl->pos)
+			free(sl->pos);
 		if (sl)
 			free(sl);
 	}

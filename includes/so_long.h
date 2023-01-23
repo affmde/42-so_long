@@ -6,7 +6,7 @@
 /*   By: andrferr <andrferr@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/22 20:59:50 by andrferr          #+#    #+#             */
-/*   Updated: 2023/01/19 09:44:02 by andrferr         ###   ########.fr       */
+/*   Updated: 2023/01/23 09:24:31 by andrferr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,5 +30,16 @@ int		handle_image(t_so_long *sl, char *filename, int	x, int y);
 int		is_valid_path(t_so_long *sl);
 int		populate_window(t_so_long *sl);
 void	free_visited(int **arr, int height);
+int		deal_key(int keycode, t_so_long *sl);
+void	count_steps(t_so_long *sl);
+int		menu_put(t_so_long *sl);
+int		move_left(t_so_long *sl);
+int		move_right(t_so_long *sl);
+int		move_down(t_so_long *sl);
+int		move_up(t_so_long *sl);
+void	show_exit(t_so_long *sl);
+int		is_collectable(t_so_long *sl, int i, int j);
+int		can_exit(t_so_long *sl, int i, int j);
+void	AI_move(t_so_long *sl);
 
 #endif

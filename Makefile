@@ -1,6 +1,7 @@
 NAME = so_long
 FLAGS = -Wall -Werror -Wextra
-SRCS = handle_errors.c map_setup.c check_validaty.c clean.c handle_window.c handle_image.c path_validity.c
+SRCS = handle_errors.c map_setup.c check_validaty.c clean.c handle_window.c handle_image.c path_validity.c events.c utils.c menu.c moves.c \
+moves_utils.c
 SRCSDEST = $(addprefix ./srcs/, $(SRCS))
 OBJ = $(SRCS:.c=.o)
 INC = -I /includes/so_long.h /includes/strucs.h
@@ -19,8 +20,8 @@ all: $(NAME)
 
 $(NAME): $(SRCSDEST) main.c
 	make -C ./libft
-	cc $(FLAGS) $(SRCSDEST) main.c -o $(NAME) -L /usr/local/lib $(MOSFLAGS) -L. ./libft/libft.a
-#cc $(FLAGS) $(SRCSDEST) main.c -o $(NAME) -L /usr/local/lib $(LINFLAGS) -L. ./libft/libft.a
+#cc $(FLAGS) $(SRCSDEST) main.c -o $(NAME) -L /usr/local/lib $(MOSFLAGS) -L. ./libft/libft.a
+	cc $(FLAGS) $(SRCSDEST) main.c -o $(NAME) -L /usr/local/lib $(LINFLAGS) -L. ./libft/libft.a
 clean:
 	rm -f *.o $(LIBOBJ)
 
