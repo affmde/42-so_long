@@ -6,7 +6,7 @@
 /*   By: andrferr <andrferr@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/09 18:06:38 by andrferr          #+#    #+#             */
-/*   Updated: 2023/01/24 15:12:08 by andrferr         ###   ########.fr       */
+/*   Updated: 2023/01/24 16:07:47 by andrferr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,10 +41,13 @@ int	handle_window(t_so_long *sl)
 	if (!sl->win)
 		return (0);
 	map_edit(sl);
-	sl->enemy->last_move = timestamp();
+	if (sl->nbr_enemies)
+		sl->enemy->last_move = timestamp();
 	populate_window(sl);
+	
 	//menu_put(sl);
-	mlx_loop_hook(sl->ptr, enemy_AI, sl);
+	if (sl->nbr_enemies)
+		mlx_loop_hook(sl->ptr, enemy_AI, sl);
 	mlx_key_hook(sl->win, deal_key, sl);
 	mlx_hook(sl->win, 17, 0, close_window, NULL);
 	mlx_loop(sl->ptr);

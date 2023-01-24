@@ -6,7 +6,7 @@
 /*   By: andrferr <andrferr@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/24 09:18:44 by andrferr          #+#    #+#             */
-/*   Updated: 2023/01/24 10:45:02 by andrferr         ###   ########.fr       */
+/*   Updated: 2023/01/24 16:04:39 by andrferr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ int	get_enemies_pos(t_so_long *sl, int i, int j)
 	if (!opon)
 		return (0);
 	t_pos	*enemy;
-	enemy = (t_pos *)malloc(sizeof(t_pos));
+	enemy = ft_calloc(1, sizeof(t_pos));
 	if (!enemy)
 		return (0);
 	enemy->i = i;

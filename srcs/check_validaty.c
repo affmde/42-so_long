@@ -6,7 +6,7 @@
 /*   By: andrferr <andrferr@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/27 22:13:18 by andrferr          #+#    #+#             */
-/*   Updated: 2023/01/24 09:12:43 by andrferr         ###   ########.fr       */
+/*   Updated: 2023/01/24 16:06:21 by andrferr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,6 +54,8 @@ static int	check_amounts(t_so_long *sl)
 				sl->nbr_exits++;
 			if (sl->map[i][j] == 'C')
 				sl->nbr_collectibles++;
+			if (sl->map[i][j] == 'G')
+				sl->nbr_enemies++;
 			j++;
 		}
 		i++;
