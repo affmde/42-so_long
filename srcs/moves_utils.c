@@ -6,7 +6,7 @@
 /*   By: andrferr <andrferr@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/23 09:13:19 by andrferr          #+#    #+#             */
-/*   Updated: 2023/01/24 16:13:43 by andrferr         ###   ########.fr       */
+/*   Updated: 2023/01/24 18:23:26 by andrferr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,6 @@ void	show_exit(t_so_long *sl)
 
 int	is_collectable(t_so_long *sl, int i, int j)
 {
-	ft_printf("c remaining: %d\n", sl->nbr_collectibles);
 	if (sl->map[i][j] == 'C')
 	{
 		sl->nbr_collectibles--;
@@ -68,6 +67,9 @@ int	killed_by_enemy(t_so_long *sl)
 	if (!sl->nbr_enemies)
 		return (0);
 	if (sl->pos->i == sl->enemy->pos->i && sl->pos->j == sl->enemy->pos->j)
+	{
+		sl->game_over = 1;
 		return (1);
+	}
 	return (0);
 }

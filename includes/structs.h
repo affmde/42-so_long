@@ -6,7 +6,7 @@
 /*   By: andrferr <andrferr@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/22 21:00:26 by andrferr          #+#    #+#             */
-/*   Updated: 2023/01/24 16:05:23 by andrferr         ###   ########.fr       */
+/*   Updated: 2023/01/24 18:21:46 by andrferr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,6 +55,7 @@ typedef struct s_so_long
 	int			nbr_collectibles;
 	int			nbr_enemies;
 	int			steps_counter;
+	int			game_over;
 	void		*ptr;
 	void		*win;
 	t_img		**img;

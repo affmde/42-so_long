@@ -6,7 +6,7 @@
 /*   By: andrferr <andrferr@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/09 18:06:38 by andrferr          #+#    #+#             */
-/*   Updated: 2023/01/24 16:07:47 by andrferr         ###   ########.fr       */
+/*   Updated: 2023/01/24 18:26:08 by andrferr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,8 +44,6 @@ int	handle_window(t_so_long *sl)
 	if (sl->nbr_enemies)
 		sl->enemy->last_move = timestamp();
 	populate_window(sl);
-	
-	//menu_put(sl);
 	if (sl->nbr_enemies)
 		mlx_loop_hook(sl->ptr, enemy_AI, sl);
 	mlx_key_hook(sl->win, deal_key, sl);

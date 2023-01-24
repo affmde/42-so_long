@@ -6,7 +6,7 @@
 /*   By: andrferr <andrferr@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/23 08:36:51 by andrferr          #+#    #+#             */
-/*   Updated: 2023/01/24 15:33:53 by andrferr         ###   ########.fr       */
+/*   Updated: 2023/01/24 18:19:01 by andrferr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,8 +19,8 @@ int	move_left(t_so_long *sl)
 		count_steps(sl);
 		if (can_exit(sl, sl->pos->i, sl->pos->j - 1))
 		{
-			mlx_destroy_window(sl->ptr, sl->win);
-			exit (1);
+			handle_end(sl, 1);
+			return (0);
 		}
 		is_collectable(sl, sl->pos->i, sl->pos->j - 1);
 		sl->map[sl->pos->i][sl->pos->j] = '0';
@@ -29,7 +29,10 @@ int	move_left(t_so_long *sl)
 		refresh_window(sl, 'l');
 		sl->pos->j--;
 		if (killed_by_enemy(sl))
-			exit(1);
+		{
+			handle_end(sl, 0);
+			return (0);
+		}
 		return (1);
 	}
 	return (0);
@@ -42,8 +45,8 @@ int	move_right(t_so_long *sl)
 		count_steps(sl);
 		if (can_exit(sl, sl->pos->i, sl->pos->j + 1))
 		{
-			mlx_destroy_window(sl->ptr, sl->win);
-			exit (1);
+			handle_end(sl, 1);
+			return (0);
 		}
 		is_collectable(sl, sl->pos->i, sl->pos->j + 1);
 		sl->map[sl->pos->i][sl->pos->j] = '0';
@@ -52,7 +55,10 @@ int	move_right(t_so_long *sl)
 		refresh_window(sl, 'r');
 		sl->pos->j++;
 		if (killed_by_enemy(sl))
-			exit(1);
+		{
+			handle_end(sl, 0);
+			return (0);
+		}
 		return (1);
 	}
 	return (0);
@@ -65,8 +71,8 @@ int	move_down(t_so_long *sl)
 		count_steps(sl);
 		if (can_exit(sl, sl->pos->i + 1, sl->pos->j))
 		{
-			mlx_destroy_window(sl->ptr, sl->win);
-			exit (1);
+			handle_end(sl, 1);
+			return (0);
 		}
 		is_collectable(sl, sl->pos->i + 1, sl->pos->j);
 		sl->map[sl->pos->i][sl->pos->j] = '0';
@@ -75,7 +81,10 @@ int	move_down(t_so_long *sl)
 		refresh_window(sl, 'd');
 		sl->pos->i++;
 		if (killed_by_enemy(sl))
-			exit(1);
+		{
+			handle_end(sl, 0);
+			return (0);
+		}
 		return (1);
 	}
 	return (0);
@@ -88,8 +97,8 @@ int	move_up(t_so_long *sl)
 		count_steps(sl);
 		if (can_exit(sl, sl->pos->i - 1, sl->pos->j))
 		{
-			mlx_destroy_window(sl->ptr, sl->win);
-			exit (1);
+			handle_end(sl, 1);
+			return (0);
 		}
 		is_collectable(sl, sl->pos->i - 1, sl->pos->j);
 		sl->map[sl->pos->i][sl->pos->j] = '0';
@@ -98,7 +107,10 @@ int	move_up(t_so_long *sl)
 		refresh_window(sl, 'u');
 		sl->pos->i--;
 		if (killed_by_enemy(sl))
-			exit(1);
+		{
+			handle_end(sl, 0);
+			return (0);
+		}
 		return (1);
 	}
 	return (0);

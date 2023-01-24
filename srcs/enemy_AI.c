@@ -6,7 +6,7 @@
 /*   By: andrferr <andrferr@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/24 09:45:28 by andrferr          #+#    #+#             */
-/*   Updated: 2023/01/24 15:33:22 by andrferr         ###   ########.fr       */
+/*   Updated: 2023/01/24 18:28:57 by andrferr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -124,9 +124,12 @@ int	enemy_AI(t_so_long *sl)
 			up(sl, x, y);
 		else if (direction == 'd' && sl->map[y + 1][x] != '1' && sl->map[y + 1][x] != 'C' && sl->map[y + 1][x] != 'E')
 			down(sl, x, y);
-		if (killed_by_enemy(sl))
-			exit (1);
 		sl->enemy->last_move = timestamp();
+	}
+	if (killed_by_enemy(sl))
+	{
+		handle_end(sl, 0);
+		return (0);
 	}
 	return (0);
 }

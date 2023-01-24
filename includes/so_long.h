@@ -6,7 +6,7 @@
 /*   By: andrferr <andrferr@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/22 20:59:50 by andrferr          #+#    #+#             */
-/*   Updated: 2023/01/24 14:54:02 by andrferr         ###   ########.fr       */
+/*   Updated: 2023/01/24 18:14:10 by andrferr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,6 @@ int		populate_window(t_so_long *sl);
 void	free_visited(int **arr, int height);
 int		deal_key(int keycode, t_so_long *sl);
 void	count_steps(t_so_long *sl);
-int		menu_put(t_so_long *sl);
 int		move_left(t_so_long *sl);
 int		move_right(t_so_long *sl);
 int		move_down(t_so_long *sl);
@@ -48,5 +47,6 @@ int		enemy_AI(t_so_long *sl);
 unsigned long	timestamp(void);
 int		refresh_window(t_so_long *sl, char instruction);
 void	replace_imgs(t_so_long *sl, t_img_change img1, t_img_change img2);
+int		handle_end(t_so_long *sl, int win);
 
 #endif
