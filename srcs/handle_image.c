@@ -6,28 +6,40 @@
 /*   By: andrferr <andrferr@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/09 18:41:30 by andrferr          #+#    #+#             */
-/*   Updated: 2023/01/24 11:34:30 by andrferr         ###   ########.fr       */
+/*   Updated: 2023/01/24 15:19:32 by andrferr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/so_long.h"
 
-
-
-int	handle_image(t_so_long *sl, char *filename, int	x, int y)
+static int	img_init(t_so_long *sl)
 {
-	sl->img = ft_calloc(1, sizeof(t_img));
+	t_img **img_arr;
+	
+	img_arr = ft_calloc(sl->height * sl->width, sizeof(t_img *));
+	if (!img_arr)
+		return (1);
+	sl->img = img_arr;
+	return (0);
+}
+
+int	handle_image(t_so_long *sl, char *filename, int	y, int x)
+{
+	int	index;
+
+	index = y * sl->width + x;
+	sl->img[index] = ft_calloc(1, sizeof(t_img));
 	if (!sl->img)
 		return (0);
-	sl->img->img_ptr = mlx_xpm_file_to_image(sl->ptr, filename, &sl->img->height, &sl->img->width);
-	if (!sl->img->img_ptr)
+	sl->img[index]->img_ptr = mlx_xpm_file_to_image(sl->ptr, filename, &sl->img[index]->height, &sl->img[index]->width);
+	if (!sl->img[index]->img_ptr)
 	{
 		ft_printf("Failed to read image!\n");
 		return (0);
 	}
-	mlx_put_image_to_window(sl->ptr, sl->win, sl->img->img_ptr, y * sl->img->height, x * sl->img->width);
-	mlx_destroy_image(sl->ptr, sl->img->img_ptr);
-	free(sl->img);
+	mlx_put_image_to_window(sl->ptr, sl->win, sl->img[index]->img_ptr, x * sl->img[index]->height, y * sl->img[index]->width);
+	//mlx_destroy_image(sl->ptr, sl->img->img_ptr);
+	//free(sl->img);
 	return (1);
 }
 
@@ -54,11 +66,12 @@ int	populate_window(t_so_long *sl)
 	int	j;
 	char *texture;
 
-	i = 0;
-	while (i < sl->height)
+	img_init(sl);
+	i = -1;
+	while (++i < sl->height)
 	{
-		j = 0;
-		while (j < sl->width)
+		j = -1;
+		while (++j < sl->width)
 		{
 			texture = get_texture(sl, i, j);
 			if (!texture)
@@ -69,9 +82,7 @@ int	populate_window(t_so_long *sl)
 				return (0);
 			}
 			ft_strdel(&texture);
-			j++;
 		}
-		i++;
 	}
 	return (1);
 }

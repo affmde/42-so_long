@@ -6,7 +6,7 @@
 /*   By: andrferr <andrferr@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/09 18:25:45 by andrferr          #+#    #+#             */
-/*   Updated: 2023/01/23 10:51:15 by andrferr         ###   ########.fr       */
+/*   Updated: 2023/01/24 15:28:16 by andrferr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,7 @@ int	deal_key(int keycode, t_so_long *sl)
 {
 	if (keycode == 65307 || keycode == 53) // escape
 	{
+		//free_struct(sl);
 		mlx_destroy_window(sl->ptr, sl->win);
 		exit (1);
 	}

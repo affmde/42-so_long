@@ -6,7 +6,7 @@
 /*   By: andrferr <andrferr@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/23 09:13:19 by andrferr          #+#    #+#             */
-/*   Updated: 2023/01/24 10:47:15 by andrferr         ###   ########.fr       */
+/*   Updated: 2023/01/24 14:36:08 by andrferr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,8 @@ void	show_exit(t_so_long *sl)
 {
 	int	i;
 	int	j;
-
+	int	index;
+	
 	if (sl->nbr_collectibles == 0)
 	{
 		i = -1;
@@ -25,7 +26,14 @@ void	show_exit(t_so_long *sl)
 			j = -1;
 			while (++j < sl->width)
 				if (sl->map[i][j] == 'e')
+				{
+					index = i * sl->width + j;
 					sl->map[i][j] = 'E';
+					mlx_destroy_image(sl->ptr, sl->img[index]->img_ptr);
+					sl->img[index]->img_ptr = mlx_xpm_file_to_image(sl->ptr, "textures/exit.xpm", &sl->img[index]->width, &sl->img[index]->height);
+					mlx_put_image_to_window(sl->ptr, sl->win, sl->img[index]->img_ptr, j * sl->img[index]->width, i * sl->img[index]->height);
+					return ;
+				}
 		}
 	}
 }

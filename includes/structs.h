@@ -6,7 +6,7 @@
 /*   By: andrferr <andrferr@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/22 21:00:26 by andrferr          #+#    #+#             */
-/*   Updated: 2023/01/24 10:41:05 by andrferr         ###   ########.fr       */
+/*   Updated: 2023/01/24 14:47:15 by andrferr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,10 +56,17 @@ typedef struct s_so_long
 	int			steps_counter;
 	void		*ptr;
 	void		*win;
-	t_img		*img;
+	t_img		**img;
 	t_pos		*pos;
 	t_pos		*exit_pos;
 	t_enemy		*enemy;
 }		t_so_long;
+
+typedef struct s_img_change
+{
+	int		x;
+	int		y;
+	char	*sprite;
+}	t_img_change;
 
 #endif

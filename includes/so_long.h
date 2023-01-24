@@ -6,7 +6,7 @@
 /*   By: andrferr <andrferr@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/22 20:59:50 by andrferr          #+#    #+#             */
-/*   Updated: 2023/01/24 10:52:57 by andrferr         ###   ########.fr       */
+/*   Updated: 2023/01/24 14:54:02 by andrferr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,4 +46,7 @@ int		map_env_setup(t_so_long *sl);
 int		killed_by_enemy(t_so_long *sl);
 int		enemy_AI(t_so_long *sl);
 unsigned long	timestamp(void);
+int		refresh_window(t_so_long *sl, char instruction);
+void	replace_imgs(t_so_long *sl, t_img_change img1, t_img_change img2);
+
 #endif

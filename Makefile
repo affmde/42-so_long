@@ -1,7 +1,7 @@
 NAME = so_long
 FLAGS = -Wall -Werror -Wextra
 SRCS = handle_errors.c map_setup.c check_validaty.c clean.c handle_window.c handle_image.c path_validity.c events.c utils.c menu.c moves.c \
-moves_utils.c map_env_setup.c enemy_AI.c
+moves_utils.c map_env_setup.c enemy_AI.c graphics_utils.c
 SRCSDEST = $(addprefix ./srcs/, $(SRCS))
 OBJ = $(SRCS:.c=.o)
 INC = -I /includes/so_long.h /includes/strucs.h
@@ -15,6 +15,7 @@ LIBSRCS = $(addprefix ./libft/, $(LIBFTSRCS))
 LIBOBJ = $(LIBSRCS:.c=.o)
 LINFLAGS = -lmlx -lXext -lX11
 MOSFLAGS = -lmlx -framework OpenGl -framework AppKit
+SANITIZER = -fsanitize=address -static-libasan
 
 all: $(NAME)
 

@@ -6,7 +6,7 @@
 /*   By: andrferr <andrferr@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/09 14:47:15 by andrferr          #+#    #+#             */
-/*   Updated: 2023/01/24 10:46:19 by andrferr         ###   ########.fr       */
+/*   Updated: 2023/01/24 15:28:08 by andrferr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,22 @@ void	free_map(char **map)
 	free(map);
 }
 
+static void	clean_imgs(t_so_long *sl)
+{
+	int	i;
+	int	max;
+
+	max = sl->height * sl->width;
+	i = 0;
+	while (i < max)
+	{
+		mlx_destroy_image(sl->ptr, sl->img[i]->img_ptr);
+		free(sl->img[i]);
+		i++;
+	}
+	free(sl->img);
+}
+
 void	free_struct(t_so_long *sl)
 {
 	if (sl)
@@ -33,7 +49,7 @@ void	free_struct(t_so_long *sl)
 		if (sl->win)
 			ft_memdel(&sl->win);
 		if (sl->img)
-			free(sl->img);
+			clean_imgs(sl);
 		if (sl->pos)
 			free(sl->pos);
 		if (sl->exit_pos)
