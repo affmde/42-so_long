@@ -6,7 +6,7 @@
 /*   By: andrferr <andrferr@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/09 14:47:15 by andrferr          #+#    #+#             */
-/*   Updated: 2023/01/23 17:44:26 by andrferr         ###   ########.fr       */
+/*   Updated: 2023/01/24 10:46:19 by andrferr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,12 @@ void	free_struct(t_so_long *sl)
 			free(sl->pos);
 		if (sl->exit_pos)
 			free(sl->exit_pos);
+		if (sl->enemy)
+		{
+			if (sl->enemy->pos)
+				free(sl->enemy->pos);
+			free(sl->enemy);
+		}
 		if (sl)
 			free(sl);
 	}

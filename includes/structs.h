@@ -6,7 +6,7 @@
 /*   By: andrferr <andrferr@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/22 21:00:26 by andrferr          #+#    #+#             */
-/*   Updated: 2023/01/23 14:58:25 by andrferr         ###   ########.fr       */
+/*   Updated: 2023/01/24 10:41:05 by andrferr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,14 @@ typedef struct s_mlx_img
 	int			endian;
 }	t_mlx_img;
 
+typedef struct s_enemy
+{
+	t_pos			*pos;
+	unsigned long	last_move;
+	int				dead;
+	int				nbr_moves;
+}	t_enemy;
+
 typedef struct s_so_long
 {
 	char		**map;
@@ -51,6 +59,7 @@ typedef struct s_so_long
 	t_img		*img;
 	t_pos		*pos;
 	t_pos		*exit_pos;
+	t_enemy		*enemy;
 }		t_so_long;
 
 #endif

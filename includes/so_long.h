@@ -6,7 +6,7 @@
 /*   By: andrferr <andrferr@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/22 20:59:50 by andrferr          #+#    #+#             */
-/*   Updated: 2023/01/23 16:52:01 by andrferr         ###   ########.fr       */
+/*   Updated: 2023/01/24 10:52:57 by andrferr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,7 @@
 #include <fcntl.h>
 #include "structs.h"
 #include "../libft/libft.h"
+#include <sys/time.h>
 
 void	handle_errors(char *msg);
 int		map_setup(char *argc, t_so_long *sl);
@@ -40,7 +41,9 @@ int		move_up(t_so_long *sl);
 void	show_exit(t_so_long *sl);
 int		is_collectable(t_so_long *sl, int i, int j);
 int		can_exit(t_so_long *sl, int i, int j);
-void	AI_move(t_so_long *sl);
 void	keep_exit_hidden(t_so_long *sl);
-
+int		map_env_setup(t_so_long *sl);
+int		killed_by_enemy(t_so_long *sl);
+int		enemy_AI(t_so_long *sl);
+unsigned long	timestamp(void);
 #endif

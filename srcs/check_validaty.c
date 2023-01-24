@@ -6,7 +6,7 @@
 /*   By: andrferr <andrferr@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/27 22:13:18 by andrferr          #+#    #+#             */
-/*   Updated: 2023/01/23 17:41:06 by andrferr         ###   ########.fr       */
+/*   Updated: 2023/01/24 09:12:43 by andrferr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 static int	confirm_char(char c)
 {
-	if (c == '0' || c == '1' || c == 'C' || c == 'E' || c == 'P')
+	if (c == '0' || c == '1' || c == 'C' || c == 'E' || c == 'P' || c == 'G')
 		return (1);
 	return (0);
 }

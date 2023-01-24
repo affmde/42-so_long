@@ -6,7 +6,7 @@
 /*   By: andrferr <andrferr@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/22 21:01:17 by andrferr          #+#    #+#             */
-/*   Updated: 2023/01/23 16:49:07 by andrferr         ###   ########.fr       */
+/*   Updated: 2023/01/24 09:33:32 by andrferr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,11 @@ int	main(int argc, char **argv)
 	{
 		free_struct(sl);
 		return (0);
+	}
+	if (map_env_setup(sl))
+	{
+		free_struct(sl);
+		return (1);
 	}
 	handle_window(sl);
 	free_struct(sl);

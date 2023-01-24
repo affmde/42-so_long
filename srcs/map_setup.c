@@ -6,7 +6,7 @@
 /*   By: andrferr <andrferr@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/27 19:24:19 by andrferr          #+#    #+#             */
-/*   Updated: 2023/01/23 15:44:21 by andrferr         ###   ########.fr       */
+/*   Updated: 2023/01/24 09:34:52 by andrferr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,16 +72,6 @@ static char	**remove_spaces(char **map, t_so_long *sl)
 			return (0);
 		while (map[i][k])
 		{
-			if (map[i][k] == 'P')
-			{
-				sl->pos->i = i;
-				sl->pos->j = j;
-			}
-			else if (map[i][k] == 'E')
-			{
-				sl->exit_pos->i = i;
-				sl->exit_pos->j = j;
-			}
 			if (!ft_isspace(map[i][k]))
 				line[j++] = map[i][k];
 			k++;
@@ -125,29 +115,9 @@ static int	get_map(char *argc, t_so_long *sl)
 
 int	map_setup(char *argc, t_so_long *sl)
 {
-	t_pos *pos;
-	pos = (t_pos *)malloc(sizeof(t_pos));
-	if (!pos)
-		return (0);
-	t_pos	*exit;
-	exit = (t_pos *)malloc(sizeof(t_pos));
-	if (!exit)
-	{
-		free(pos);
-		return (0);
-	}
-	sl->pos = pos;
-	sl->exit_pos = exit;
 	if (!get_map_dimensions(argc, sl))
-	{
-		free(pos);
-		free(exit);
 		return (0);
-	}
 	if (!get_map(argc, sl))
-	{
-		free(pos);
 		return (0);
-	}
 	return (1);
 }

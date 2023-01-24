@@ -6,7 +6,7 @@
 /*   By: andrferr <andrferr@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/23 09:13:19 by andrferr          #+#    #+#             */
-/*   Updated: 2023/01/23 15:52:13 by andrferr         ###   ########.fr       */
+/*   Updated: 2023/01/24 10:47:15 by andrferr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,4 +52,11 @@ void	keep_exit_hidden(t_so_long *sl)
 {
 	if (sl->nbr_collectibles && sl->pos->i != sl->exit_pos->i && sl->pos->j != sl->exit_pos->j)
 		sl->map[sl->exit_pos->i][sl->exit_pos->j] = 'e';
+}
+
+int	killed_by_enemy(t_so_long *sl)
+{
+	if (sl->pos->i == sl->enemy->pos->i && sl->pos->j == sl->enemy->pos->j)
+		return (1);
+	return (0);
 }
