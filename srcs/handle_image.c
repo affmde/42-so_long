@@ -6,7 +6,7 @@
 /*   By: andrferr <andrferr@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/09 18:41:30 by andrferr          #+#    #+#             */
-/*   Updated: 2023/01/24 09:14:07 by andrferr         ###   ########.fr       */
+/*   Updated: 2023/01/24 11:34:30 by andrferr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,7 @@ static char	*get_texture(t_so_long *sl, int i, int j)
 	else if (sl->map[i][j] == 'G')
 		return (ft_strdup("textures/ghost.xpm"));
 	else if (sl->map[i][j] == 'E')
-		return (ft_strdup("textures/tile.xpm")); // STILL CHANGE THIS TO PROPER EXIT SPRITE!!!!
+		return (ft_strdup("textures/exit.xpm"));
 	else
 		return (ft_strdup("textures/ground.xpm"));
 	return (NULL);
