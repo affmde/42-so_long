@@ -6,7 +6,7 @@
 /*   By: andrferr <andrferr@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/22 21:01:17 by andrferr          #+#    #+#             */
-/*   Updated: 2023/01/24 17:40:33 by andrferr         ###   ########.fr       */
+/*   Updated: 2023/01/25 10:04:16 by andrferr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 int	main(int argc, char **argv)
 {
 	t_so_long *sl;
-	
+
 	sl = (t_so_long *)ft_calloc(1, sizeof(t_so_long));
 	if (!sl)
 		return (0);
