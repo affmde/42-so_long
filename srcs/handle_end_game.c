@@ -6,7 +6,7 @@
 /*   By: andrferr <andrferr@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/24 16:29:20 by andrferr          #+#    #+#             */
-/*   Updated: 2023/01/25 09:06:57 by andrferr         ###   ########.fr       */
+/*   Updated: 2023/01/25 11:08:32 by andrferr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 int	handle_keys(int keycode, t_so_long *sl)
 {
-	if (keycode == 113 || keycode == 65307 || keycode == 53)
+	if (keycode == 113 || keycode == 65307 || keycode == 53 || keycode == 12)
 		exit (sl->nbr_exits);
 	return (0);
 }
@@ -22,7 +22,7 @@ int	handle_keys(int keycode, t_so_long *sl)
 int	handle_end(t_so_long *sl, int win)
 {
 	char *str;
-	
+
 	str = ft_itoa(sl->steps_counter);
 	mlx_clear_window(sl->ptr, sl->win);
 	if (win)

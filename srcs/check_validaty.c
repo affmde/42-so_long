@@ -6,7 +6,7 @@
 /*   By: andrferr <andrferr@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/27 22:13:18 by andrferr          #+#    #+#             */
-/*   Updated: 2023/01/24 18:13:30 by andrferr         ###   ########.fr       */
+/*   Updated: 2023/01/25 11:20:02 by andrferr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -136,7 +136,7 @@ static int	check_colectables_access(t_so_long *sl)
 
 int	check_validaty(t_so_long *sl)
 {
-	if (!check_chars(sl) || sl->height == sl->width)
+	if (!check_chars(sl))
 	{
 		ft_putendl_fd("Invalid map.", 2);
 		return (0);

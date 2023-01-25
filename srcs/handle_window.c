@@ -6,7 +6,7 @@
 /*   By: andrferr <andrferr@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/09 18:06:38 by andrferr          #+#    #+#             */
-/*   Updated: 2023/01/24 18:26:08 by andrferr         ###   ########.fr       */
+/*   Updated: 2023/01/25 11:06:49 by andrferr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,6 +49,6 @@ int	handle_window(t_so_long *sl)
 	mlx_key_hook(sl->win, deal_key, sl);
 	mlx_hook(sl->win, 17, 0, close_window, NULL);
 	mlx_loop(sl->ptr);
-	mlx_destroy_display(sl->ptr);
+	//mlx_destroy_display(sl->ptr);
 	return (1);
 }
