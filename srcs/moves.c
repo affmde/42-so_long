@@ -6,7 +6,7 @@
 /*   By: andrferr <andrferr@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/23 08:36:51 by andrferr          #+#    #+#             */
-/*   Updated: 2023/01/24 18:19:01 by andrferr         ###   ########.fr       */
+/*   Updated: 2023/01/25 14:55:13 by andrferr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,7 @@ int	move_left(t_so_long *sl)
 		count_steps(sl);
 		if (can_exit(sl, sl->pos->i, sl->pos->j - 1))
 		{
+			sl->game_over = 1;
 			handle_end(sl, 1);
 			return (0);
 		}
@@ -30,6 +31,7 @@ int	move_left(t_so_long *sl)
 		sl->pos->j--;
 		if (killed_by_enemy(sl))
 		{
+			sl->game_over = 1;
 			handle_end(sl, 0);
 			return (0);
 		}
@@ -45,6 +47,7 @@ int	move_right(t_so_long *sl)
 		count_steps(sl);
 		if (can_exit(sl, sl->pos->i, sl->pos->j + 1))
 		{
+			sl->game_over = 1;
 			handle_end(sl, 1);
 			return (0);
 		}
@@ -56,6 +59,7 @@ int	move_right(t_so_long *sl)
 		sl->pos->j++;
 		if (killed_by_enemy(sl))
 		{
+			sl->game_over = 1;
 			handle_end(sl, 0);
 			return (0);
 		}
@@ -71,6 +75,7 @@ int	move_down(t_so_long *sl)
 		count_steps(sl);
 		if (can_exit(sl, sl->pos->i + 1, sl->pos->j))
 		{
+			sl->game_over = 1;
 			handle_end(sl, 1);
 			return (0);
 		}
@@ -82,6 +87,7 @@ int	move_down(t_so_long *sl)
 		sl->pos->i++;
 		if (killed_by_enemy(sl))
 		{
+			sl->game_over = 1;
 			handle_end(sl, 0);
 			return (0);
 		}
@@ -97,6 +103,7 @@ int	move_up(t_so_long *sl)
 		count_steps(sl);
 		if (can_exit(sl, sl->pos->i - 1, sl->pos->j))
 		{
+			sl->game_over = 1;
 			handle_end(sl, 1);
 			return (0);
 		}
@@ -108,6 +115,7 @@ int	move_up(t_so_long *sl)
 		sl->pos->i--;
 		if (killed_by_enemy(sl))
 		{
+			sl->game_over = 1;
 			handle_end(sl, 0);
 			return (0);
 		}
